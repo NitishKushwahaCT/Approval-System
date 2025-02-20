@@ -16,11 +16,18 @@ public class DocumentController {
 
     private final DocumentService documentService;
 
+//    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+//    public ResponseEntity<String> uploadDocument(@RequestParam("file") MultipartFile file,
+//                                                 @RequestParam("userId") Integer userId) {
+//        String fileUrl = documentService.uploadDocument(file, userId);
+//        return ResponseEntity.ok("Document uploaded successfully: " + fileUrl);
+//    }
+
     @PostMapping("/upload")
     public ResponseEntity<String> uploadDocument(@RequestBody MultipartFile file) {
 //        String fileUrl = documentService.uploadDocument(file);
 //        return ResponseEntity.ok("Document uploaded successfully: " + fileUrl);
-        return new ResponseEntity<>(documentService.uploadDocument(file), HttpStatus.OK);
+       return new ResponseEntity<>(documentService.uploadDocument(file), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
